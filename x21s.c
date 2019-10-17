@@ -49,14 +49,15 @@ static void getAlgoString(const uint8_t* prevblock, char *output)
 
     int i;
 
-    for(i = 0; i < 16; i++){
+    for (i = 0; i < 16; i++){
             uint8_t b = (15 - i) >> 1; // 16 ascii hex chars, reversed
             uint8_t algoDigit = (i & 1) ? prevblock[b] & 0xF : prevblock[b] >> 4;
 
             int offset = algoDigit;
             // insert the nth character at the front
             char oldVal = output[offset];
-            for(int j=offset; j-->0;) {
+            int j;
+            for (j = offset; j-->0;) {
                     output[j+1] = output[j];
             }
             output[0] = oldVal;
