@@ -11,7 +11,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -19,10 +19,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -634,7 +634,7 @@ haval_init(sph_haval_context *sc, unsigned olen, unsigned passes)
 	sc->count_high = 0;
 	sc->count_low = 0;
 #endif
-	
+
 }
 
 /*
@@ -919,7 +919,27 @@ API(224, 4)
 API(224, 5)
 API(256, 3)
 API(256, 4)
-API(256, 5)
+// API(256, 5)
+
+void sph_haval256_5_init(void *cc)
+{
+	haval_init(cc, 256 >> 5, 5);
+}
+
+void sph_haval256_5 (void *cc, const void *data, size_t len)
+{
+	haval5(cc, data, len);
+}
+
+void sph_haval256_5_close(void *cc, void *dst)
+{
+	haval5_close(cc, 0, 0, dst);
+}
+
+void sph_haval256_5addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
+{
+	haval5_close(cc, ub, n, dst);
+}
 
 #define RVAL   do { \
 		s0 = val[0]; \
@@ -980,4 +1000,4 @@ sph_haval_5_comp(const sph_u32 msg[32], sph_u32 val[8])
 
 #ifdef __cplusplus
 }
-#endif	
+#endif
