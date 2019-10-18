@@ -919,27 +919,7 @@ API(224, 4)
 API(224, 5)
 API(256, 3)
 API(256, 4)
-// API(256, 5)
-
-void sph_haval256_5_init(void *cc)
-{
-	haval_init(cc, 256 >> 5, 5);
-}
-
-void sph_haval256_5 (void *cc, const void *data, size_t len)
-{
-	haval5(cc, data, len);
-}
-
-void sph_haval256_5_close(void *cc, void *dst)
-{
-	haval5_close(cc, 0, 0, dst);
-}
-
-void sph_haval256_5addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
-{
-	haval5_close(cc, ub, n, dst);
-}
+API(256, 5)
 
 #define RVAL   do { \
 		s0 = val[0]; \
