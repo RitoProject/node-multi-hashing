@@ -58,7 +58,7 @@
 		        "x16r.c",
                 "sph/haval.c",
                 "sph/tiger.c",
-                "sph/ghost_streebog.c",
+                "sph/gost_streebog.c",
                 "sph/sph_sha2.c",
                 "sph/blake.c",
                 "sph/bmw.c",
